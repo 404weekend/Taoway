@@ -1,11 +1,11 @@
 ---
 name: taoway-ai-editing
-description: TAOWAY cinematic editing, subtitle, Text+ and Fusion guidance for AI-assisted DaVinci Resolve projects with original-media non-destructive timeline edits and T-mode trim handles.
+description: TAOWAY cinematic editing for DaVinci Resolve with original-media T-mode trim handles, full-library re-edits, editable Text+/Fusion subtitles, AI sound effects and narrative-aware single/multi-cue BGM.
 ---
 
 # TAOWAY AI Editing
 
-Version: 1.2.0
+Version: 1.3.0
 
 ## When to use
 Use for TAOWAY travel, mountain, hiking, snowboarding and everyday-life video analysis, grading, edit decisions and DaVinci Resolve timelines. Explicit project instructions override style defaults.
@@ -18,6 +18,8 @@ Use for TAOWAY travel, mountain, hiking, snowboarding and everyday-life video an
 5. **Editable deliverables.** Prefer Resolve Scripting API with original Media Pool items; otherwise generate FCPXML/XML that references the original source path. Test relinking and trim behavior in the installed Resolve version.
 6. **Independent typography.** Keep speech subtitles in editable Subtitle Track/SRT; use Text+ for ordinary cinematic titles and metadata; Fusion nodes or tested presets for tracking, occlusion, masks and complex animation. Never burn in text to replacement media.
 7. **Full-library re-edit.** An old timeline is one edit decision, never the source inventory for the next cut. New full re-edits consider all eligible originals in the Media Pool / source registry, including unused clips. Keep prior timelines intact and reuse source-analysis cache.
+8. **Editable sound and music.** Keep original ambience, Foley/SFX, BGM and voiceover on independent editable audio tracks. Choose sounds/music around story and authentic action, not merely total duration. Source-anchor action SFX, recalculate against re-edits, verify playable assets and licensing, and never fabricate inserted audio.
+
 
 ## TAOWAY color identity
 **Low-saturation naturalism × filmic texture × minimalist outdoor editorial.** A24 is a reference for restrained pacing, atmosphere and negative space. Patagonia is a reference for authentic wilderness and environmental storytelling. Neither requires cloning specific shots or applying one LUT to all scenes.
@@ -114,6 +116,17 @@ Store text separately from source media:
 ```
 Keep transcript/caption cues separately timed; validate retiming, fonts, glyphs, 16:9/9:16 and import behavior. FCPXML/XML does not guarantee that all Text+ and Fusion node parameters survive. Deliver SRT + title event JSON + compatible templates as needed. Detailed rules: `references/subtitle-system.md`.
 
+## AI sound effects and Music Director (v1.3)
+**Music and effects serve the story, not vice versa.** AI can plan audio without a sound library but must acquire/generate real licensed playable assets before claiming they were inserted. Preference: source-recorded ambience/foley → licensed searchable audio → permitted AI-generated sound/music → human review. Save each asset's location, source, rights/attribution and acquisition status.
+
+**SFX:** Identify genuine action on original footage (e.g., snow carve, footsteps, fabric, wind, impact). Avoid unsupported, artificial effects and overused Whooshes. Anchor action sounds to original `source_id + source_event_frame` (and duration/segment) rather than only a fixed timeline second; re-map after Trim Edit Mode adjustments, retiming, slipping, moving and full-library re-edits. Anchor non-diegetic effects to story beats or edit boundaries.
+
+**BGM:** For a 60-second film, choose one suitably structured track by default; use two or three cues only when story chapters and emotional changes warrant it. Assess phrase boundaries, rhythmic fit/BPM, key/harmony, instrumentation, energy trajectory, dynamics and vocal clashes. Actual musical junctions require audition/verification; BPM/key alone cannot guarantee compatibility. Use transitions through short crossfade, phrase cut, natural ambience bridge or silence. Music may intentionally end before the picture. Prioritize intelligible speech and real sound.
+
+**Track organization:** Original ambience, BGM, Foley/SFX and voiceover occupy separate editable audio layers (e.g. A1–A4). Include source in/out, timeline ranges in the timeline FPS, gain/fades, beat anchors, licensing and sync status in JSON. Insert actual audio files through supported Resolve functionality; Fairlight automation and mixing support vary by Resolve version, so verify placement and report any manual finishing needs.
+
+**Re-edit:** When scene selection, source in/out, tempo or video duration changes, recompute the music storyboard and SFX source-to-timeline mappings. Preserve old timeline and music edit, reuse cached audio metadata, and avoid blindly looping/extending songs or leaving sounds attached to obsolete timecodes. See `references/sound-design-and-music.md` for templates, source policy and QA.
+
 ## Token-efficient AI footage analysis
 1. Locally extract original metadata, timecodes, rotation, FPS, codecs, duration, audio and stable fingerprints.
 2. Analyze scene cuts, blur, exposure, repeated footage, motion, silence and speech locally where feasible.
@@ -152,4 +165,4 @@ This is illustrative, not a verified media range. Derive timeline duration with 
 ## Final handoff
 Report narrative intent, chosen look, original-linked clip and frame-range decisions, real project/XML/JSON paths created, and verified trim/editability results. Flag untested operations rather than inventing success.
 
-See `references/full-library-reedit.md`, `references/subtitle-system.md` and `references/qa-checklist.md`.
+See `references/full-library-reedit.md`, `references/subtitle-system.md`, `references/sound-design-and-music.md` and `references/qa-checklist.md`.
