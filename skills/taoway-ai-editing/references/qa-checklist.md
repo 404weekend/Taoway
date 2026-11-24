@@ -47,3 +47,16 @@
 - [ ] Logged eligible/considered/selected-source counts and offline exclusions.
 - [ ] All new timeline selections reference original files with available trim handles (T mode).
 - [ ] Timeline import/relink does not inadvertently reduce the whole project Media Pool to clips referenced by prior XML.
+
+## Sound design and narrative music (v1.3)
+- [ ] SFX is motivated by identified real source action, ambience or specific editorial transition.
+- [ ] Source-anchored SFX uses source ID/event frame and re-maps after trimming, moving, slipping or speed change.
+- [ ] Location ambience is preserved where valuable; no gratuitous whooshes or duplicated impact sounds.
+- [ ] Audio source exists as a playable file, and license/attribution/commercial rights are recorded.
+- [ ] Pending AI generation/search is labeled pending, not reported as imported or mixed.
+- [ ] BGM plan starts from story beats and energy curve; defaults to one cohesive track where suitable.
+- [ ] Multi-cue music has reviewed phrase, tempo, harmony, timbre, volume and emotional transitions.
+- [ ] Music gaps, ambient bridges and purposeful silence are allowed; songs are not stretched mechanically to fill time.
+- [ ] Separate editable tracks for ambience, BGM, Foley/SFX and voiceover; fades and dialogue ducking tested.
+- [ ] Re-edited timeline rebuilds music plan and remaps sound events without modifying prior timeline.
+- [ ] Scripting/XML support and actual Resolve audio placement, mix state, clipping and sync verified.
